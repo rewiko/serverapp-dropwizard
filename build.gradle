@@ -1,0 +1,24 @@
+group 'com.serverapp'
+version '1.0-SNAPSHOT'
+
+apply plugin: 'application'
+
+mainClassName = 'com.serverapp.main.MyApplication'
+
+sourceCompatibility = 1.8
+project.ext {
+    dropwizardVersion = '1.2.1'
+    configPath = "$rootProject.projectDir/config/"
+}
+run {
+    args 'server', configPath + 'config.yml'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+}
